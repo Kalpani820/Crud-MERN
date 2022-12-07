@@ -73,15 +73,27 @@ function Posts() {
   };
 
   return (
-    <div style={{ width: "90%", margin: "auto auto", textAlign: "center" }}>
-      <h1>Posts page</h1>
-      <Button
-        variant="outline-dark"
-        style={{ width: "100%", marginBottom: "1rem" }}
-        onClick={() => navigate(-1)}
-      >
-        BACK
-      </Button>
+    <div className="container-md container-fluid" style={{ width: "90%", margin: "auto auto", marginTop: "2rem", textAlign: "center" }}>
+      <div class="container">
+        <div class="row justify-content-md-center">
+
+          <div class="row-md-auto" style={{ color: "red" }}>
+            <h1>Your Magical thoughts</h1>
+          </div>
+          <div class="row-md-auto">
+            <Button
+              variant="dark"
+              style={{ marginBottom: "1rem", float: "right" }}
+              onClick={() => navigate(-1)}
+            >
+              POST NEW +
+            </Button>
+          </div>
+        </div>
+      </div>
+
+
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update a post</Modal.Title>
@@ -105,7 +117,7 @@ function Posts() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={saveUpdatedPost}>
+          <Button variant="danger" onClick={saveUpdatedPost}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -114,41 +126,52 @@ function Posts() {
         <>
           {posts.map((post) => {
             return (
-              <div
-                style={{
-                  marginBottom: "1rem",
-                  border: "solid lightgray 1px",
-                  borderRadius: "8px",
-                }}
-                key={post._id}
-              >
-                <h4>{post.title}</h4>
-                <p>{post.description}</p>
+              <div className="container-md container-fluid">
                 <div
                   style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-
-                    padding: "1rem",
+                    marginBottom: "1rem",
+                    border: "solid lightgray 1px",
+                    borderRadius: "8px",
                   }}
+                  key={post._id}
                 >
-                  <Button
-                    variant="outline-info"
-                    onClick={() =>
-                      updatePost(post._id, post.title, post.description)
-                    }
-                    style={{ width: "100%", marginRight: "1rem" }}
+                  <h4>{post.title}</h4>
+                  <p>{post.description}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+
+                      padding: "1rem",
+                    }}
                   >
-                    UPDATE
-                  </Button>
-                  <Button
-                    onClick={() => deletePost(post._id)}
-                    variant="outline-danger"
-                    style={{ width: "100%" }}
-                  >
-                    DELETE
-                  </Button>
+                    <div class="container">
+                      <div class="row justify-content-md-center" style={{ float: "right" }}>
+
+                        <div class="col-md-auto">
+                          <Button
+                            variant="info"
+                            onClick={() =>
+                              updatePost(post._id, post.title, post.description)
+                            }
+                            style={{ float: "right" , marginBottom:"5px"}}
+                          >
+                            UPDATE
+                          </Button>
+                        </div>
+                        <div class="col-md-auto">
+                          <Button
+                            onClick={() => deletePost(post._id)}
+                            variant="outline-danger"
+                            style={{float:"right"}}
+                          >
+                            DELETE
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             );

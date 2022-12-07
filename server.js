@@ -60,6 +60,6 @@ app.put("/update/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.listen(3001, function () {
+app.listen(3000, function () {
   console.log("Express server is running");
 });
